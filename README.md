@@ -18,6 +18,27 @@ It uses the same building blocks as Llama-class models:
 <!-- author-banner -->
 > **Project 02 of 20** in my AI build series, designed and built by **[Abbishekk DGS](https://abbishekkdgs.tech)**. [See all projects →](https://github.com/Abbishekk-DGS)
 
+<!-- overview:start -->
+## Overview
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/overview-dark.svg">
+  <img alt="gpt-from-scratch overview: how it works and its output. Key numbers: 0.98 M parameters, tiny preset; 3.46 validation loss; 31.8 perplexity, from 1,033; 2.5 min on an 8 GB Mac. Stack: Python · PyTorch · BPE · RoPE · RMSNorm · SwiGLU · CUDA / MPS / CPU." src="docs/overview-light.svg" width="100%">
+</picture>
+
+## Interface
+
+The whole project runs from three terminal commands. There is no graphical app.
+
+| Command | What it does | Options (default) |
+|---|---|---|
+| `gpt-from-scratch prepare` | Trains the tokenizer and prepares the data | `--input` (`data/shakespeare.txt`), `--vocab` (2048) |
+| `gpt-from-scratch train` | Trains the model and saves the best checkpoint | `--preset` tiny, small or base (small), `--steps` (3000), `--batch` (32), `--lr` (0.001), `--dropout` (0.1) |
+| `gpt-from-scratch sample` | Generates text | `--prompt`, `--tokens` (300), `--temperature` (0.8), `--top-k` (50), `--seed` (0) |
+
+These go before the command: `--data` (`data/prepared`), `--out` (`runs/latest`) and `--device` (cuda, mps or cpu, detected automatically).
+<!-- overview:end -->
+
 ## Results
 
 The `tiny` preset trained on Tiny Shakespeare on an 8 GB Apple Silicon Mac (MPS):
